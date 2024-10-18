@@ -29,7 +29,7 @@ async def test_tt_um_Richard28277(dut):
             await Timer(50, units='ns')
             display_result("ADD")
             result = (i+j)%16
-            carry = (i+j)/16
+            carry = (i+j)//16
             assert dut.uo_out.value == int(carry*16+result) & 0b11111111 # Expect 8 (0b00001000)
     
 

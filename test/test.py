@@ -25,12 +25,12 @@ async def test_tt_um_Richard28277(dut):
     dut.uio_in.value = 0b0000      # opcode = ADD
     for i in range (0,16):
         for j in range(0,16):
-            dut.ui_in.value = bin(i*16+j) & 0b11111111 # a = 3, b = 5
+            dut.ui_in.value = (i*16+j) & 0b11111111 # a = 3, b = 5
             await Timer(50, units='ns')
             display_result("ADD")
             result = (i+j)%16
             carry = (i+j)/16
-            assert dut.uo_out.value == bin(carry*16+result) & 0b11111111 # Expect 8 (0b00001000)
+            assert dut.uo_out.value == (carry*16+result) & 0b11111111 # Expect 8 (0b00001000)
     
 
     # Test SUB operation

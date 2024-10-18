@@ -28,7 +28,9 @@ async def test_tt_um_Richard28277(dut):
             dut.ui_in.value = bin(i*16+j) # a = 3, b = 5
             await Timer(50, units='ns')
             display_result("ADD")
-            assert dut.uo_out.value == 0b0000_1000  # Expect 8 (0b00001000)
+            result = (i+j)%16
+            carry = (i+j)/16
+            assert dut.uo_out.value == bin(carry*16+result)  # Expect 8 (0b00001000)
     
 
     # Test SUB operation

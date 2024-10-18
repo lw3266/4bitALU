@@ -30,6 +30,7 @@ async def test_tt_um_Richard28277(dut):
             display_result("ADD")
             result = (i+j)%16
             carry = (i+j)//16
+            print(f"expected result is:{i+j}, result is {result}, carry is {carry}")
             assert dut.uo_out.value == int(carry*16+result) & 0b11111111 # Expect 8 (0b00001000)
     
 

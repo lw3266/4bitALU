@@ -22,11 +22,14 @@ async def test_tt_um_Richard28277(dut):
         print(f"{op_name}: result = {dut.uo_out.value}, uio_out = {dut.uio_out.value}")
 
     # Test ADD operation
-    dut.ui_in.value = 0b0011_0101  # a = 3, b = 5
     dut.uio_in.value = 0b0000      # opcode = ADD
-    await Timer(50, units='ns')
-    display_result("ADD")
-    assert dut.uo_out.value == 0b0000_1000  # Expect 8 (0b00001000)
+    for i in range (0,16):
+        for j in range(0,16):
+            dut.ui_in.value = bin(i*16+j) # a = 3, b = 5
+            await Timer(50, units='ns')
+            display_result("ADD")
+            assert dut.uo_out.value == 0b0000_1000  # Expect 8 (0b00001000)
+    
 
     # Test SUB operation
     dut.ui_in.value = 0b0010_0001  # a = 2, b = 1

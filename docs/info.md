@@ -9,6 +9,9 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
+This project references code from the following repo, credit to those authors:
+https://github.com/Richard28277/4bit_alu
+
 It doesnt work
 
 ## How to test
